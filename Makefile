@@ -33,7 +33,8 @@ srcs/ft_printf/form/form_str_char/form_unicode		\
 OBJ_DIR := objs
 HEADER := includes/libft.h
 MAKE := make
-RM := rm -f
+RM := rm -rf
+
 search_wildcards := $(addsuffix /*.c, $(source_dirs))
 
 OBJ = $(notdir $(patsubst %.c, %.o, $(wildcard $(search_wildcards))))
@@ -41,9 +42,7 @@ OBJ = $(notdir $(patsubst %.c, %.o, $(wildcard $(search_wildcards))))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	mkdir -p $(OBJ_DIR)
 	@ar rc $@ $^
-	mv *.o $(OBJ_DIR)
 	@ranlib $(NAME)
 
 VPATH := $(source_dirs)
@@ -52,7 +51,7 @@ VPATH := $(source_dirs)
 	$(CC) $(FLAGS) -c $(addprefix -I, $(source_dirs)) $<
 
 clean:
-	@$(RM) $(OBJ_DIR)
+	@$(RM) $(OBJ)
 
 fclean: clean
 	@$(RM) libft.a
