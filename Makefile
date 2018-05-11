@@ -21,18 +21,19 @@ srcs/mem											\
 srcs/put											\
 srcs/str											\
 srcs/get_next_line									\
-srcs/ft_printf/srcs									\
-srcs/ft_printf/srcs/auxiliary						\
-srcs/ft_printf/srcs/form							\
-srcs/ft_printf/srcs/parsing							\
-srcs/ft_printf/srcs/form/form_num					\
-srcs/ft_printf/srcs/form/form_num/get_num			\
-srcs/ft_printf/srcs/form/form_str_char				\
-srcs/ft_printf/srcs/form/form_str_char/form_unicode	\
+srcs/ft_printf/										\
+srcs/ft_printf/auxiliary							\
+srcs/ft_printf/form									\
+srcs/ft_printf/parsing								\
+srcs/ft_printf/form/form_num						\
+srcs/ft_printf/form/form_num/get_num				\
+srcs/ft_printf/form/form_str_char					\
+srcs/ft_printf/form/form_str_char/form_unicode		\
 
+OBJ_DIR := objs
 HEADER := includes/libft.h
 MAKE := make
-
+RM := rm -f
 search_wildcards := $(addsuffix /*.c, $(source_dirs))
 
 OBJ = $(notdir $(patsubst %.c, %.o, $(wildcard $(search_wildcards))))
@@ -40,7 +41,9 @@ OBJ = $(notdir $(patsubst %.c, %.o, $(wildcard $(search_wildcards))))
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	mkdir -p $(OBJ_DIR)
 	@ar rc $@ $^
+	mv *.o $(OBJ_DIR)
 	@ranlib $(NAME)
 
 VPATH := $(source_dirs)
@@ -49,7 +52,7 @@ VPATH := $(source_dirs)
 	$(CC) $(FLAGS) -c $(addprefix -I, $(source_dirs)) $<
 
 clean:
-	@$(RM) $(OBJ)
+	@$(RM) $(OBJ_DIR)
 
 fclean: clean
 	@$(RM) libft.a

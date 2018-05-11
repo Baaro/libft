@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../../../includes/ft_printf.h"
+#include "../../../../includes/ft_printf.h"
 
 static void	output_char(char c, t_arg *arg)
 {
