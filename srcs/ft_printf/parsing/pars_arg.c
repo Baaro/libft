@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/ft_printf.h"
+#include "ft_printf.h"
 
 static void	pars_flags(char **f, t_arg **arg)
 {

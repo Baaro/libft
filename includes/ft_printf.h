@@ -12,17 +12,19 @@
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+
 # include <stdarg.h>
 # include <limits.h>
 # include <stdbool.h>
 # include <stddef.h>
 # include <stdint.h>
 # include <wchar.h>
+
 # include "libft.h"
 
 # define FLAGS "-+ #0"
 # define TYPES "sScCdD%ioOuUxXpn"
-# define ABS(x) (((x) < 0) ? -(x) : (x))
+# define ABS(x)  x = own_abs(x);
 # define ARG (**arg)
 # define FLAGS_TO_ZERO(i) while ((i) != 6) arg.flags[(i)++] = 0;
 # define MINUS 0
@@ -124,5 +126,6 @@ void			output(t_arg *arg, char *str);
 void			correct_flags(t_arg **arg);
 int				count_bits(int value);
 int				wstrlen(wchar_t *wstr);
+intmax_t		own_abs(intmax_t val);
 
 #endif

@@ -12,16 +12,21 @@
 
 NAME = libft.a
 CC := gcc
-FLAGS := -Wall -Wextra -Werror
+FLAGS := -Wall -Wextra -Werror -g
+
+INCLUDES := includes/
 source_dirs := .									\
-srcs/convert_to										\
+srcs/convert_to/									\
 srcs/is_ascii										\
 srcs/lst											\
 srcs/mem											\
 srcs/put											\
 srcs/str											\
+srcs/is_dir_file									\
+srcs/convert_to										\
+srcs/swap_bytes										\
 srcs/get_next_line									\
-srcs/ft_printf/										\
+srcs/ft_printf										\
 srcs/ft_printf/auxiliary							\
 srcs/ft_printf/form									\
 srcs/ft_printf/parsing								\
@@ -30,8 +35,6 @@ srcs/ft_printf/form/form_num/get_num				\
 srcs/ft_printf/form/form_str_char					\
 srcs/ft_printf/form/form_str_char/form_unicode		\
 
-OBJ_DIR := objs
-HEADER := includes/libft.h
 MAKE := make
 RM := rm -rf
 
@@ -43,18 +46,19 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar rc $@ $^
-	@ranlib $(NAME)
+	@ranlib $@
+	@echo "\033[092mLibft has compiled successfully!\033[0m"
 
 VPATH := $(source_dirs)
 
-%.o: %.c $(HEADER)
-	$(CC) $(FLAGS) -c $(addprefix -I, $(source_dirs)) $<
+%.o: %.c
+	@$(CC) $(FLAGS) -I $(INCLUDES) -c $< -o $@
 
 clean:
 	@$(RM) $(OBJ)
 
 fclean: clean
-	@$(RM) libft.a
+	@$(RM) $(NAME)
 
 re: fclean all
 

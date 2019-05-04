@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../../includes/ft_printf.h"
+#include "ft_printf.h"
 
 static void	get_num(char **num, va_list ap, t_arg *arg)
 {

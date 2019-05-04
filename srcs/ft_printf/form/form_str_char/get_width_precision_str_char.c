@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../../includes/ft_printf.h"
+#include "ft_printf.h"
 
 static void	get_width_str(char **width, t_arg arg, int size)
 {

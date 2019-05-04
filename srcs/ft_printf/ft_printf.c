@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/ft_printf.h"
+#include "ft_printf.h"
 
 static void	set_to_zero(t_arg *arg, short *i)
 {

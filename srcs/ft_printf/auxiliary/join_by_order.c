@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../../includes/ft_printf.h"
+#include "ft_printf.h"
 
 char		*output_by_order(char *s1, char *s2, char *s3, char *s4)
 {

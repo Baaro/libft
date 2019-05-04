@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../../includes/ft_printf.h"
+#include "ft_printf.h"
 
 static void	correct_flags_integer(t_arg **arg)
 {
