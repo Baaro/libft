@@ -15,17 +15,19 @@ CC := gcc
 FLAGS := -Wall -Wextra -Werror -g
 
 INCLUDES := includes/
+
 source_dirs := .									\
-srcs/convert_to/									\
-srcs/is_ascii										\
-srcs/lst											\
-srcs/mem											\
-srcs/put											\
-srcs/str											\
-srcs/is_dir_file									\
-srcs/convert_to										\
-srcs/swap_bytes										\
+srcs/ascii											\
 srcs/get_next_line									\
+srcs/list											\
+srcs/memory											\
+srcs/put											\
+srcs/string											\
+srcs/system											\
+srcs/math/accessors									\
+srcs/math/errors									\
+srcs/math/memory									\
+srcs/math/operations								\
 srcs/ft_printf										\
 srcs/ft_printf/auxiliary							\
 srcs/ft_printf/form									\
@@ -45,20 +47,19 @@ OBJ = $(notdir $(patsubst %.c, %.o, $(wildcard $(search_wildcards))))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@ar rc $@ $^
-	@ranlib $@
+	ar rc $@ $^
 	@echo "\033[092mLibft has compiled successfully!\033[0m"
 
 VPATH := $(source_dirs)
 
-%.o: %.c
-	@$(CC) $(FLAGS) -I $(INCLUDES) -c $< -o $@
+%.o: %.c $(INCLUDES)
+	$(CC) $(FLAGS) -I $(INCLUDES) -c $< -o $@ -lm
 
 clean:
-	@$(RM) $(OBJ)
+	$(RM) $(OBJ)
 
 fclean: clean
-	@$(RM) $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
