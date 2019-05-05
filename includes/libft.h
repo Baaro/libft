@@ -20,7 +20,7 @@
 
 # include "get_next_line.h"
 # include "ft_printf.h"
-# include "libmath.h"
+# include "matrix.h"
 
 typedef struct		s_list
 {

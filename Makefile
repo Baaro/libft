@@ -24,10 +24,10 @@ srcs/memory											\
 srcs/put											\
 srcs/string											\
 srcs/system											\
-srcs/math/accessors									\
-srcs/math/errors									\
-srcs/math/memory									\
-srcs/math/operations								\
+srcs/matrix/accessors									\
+srcs/matrix/errors									\
+srcs/matrix/memory									\
+srcs/matrix/operations								\
 srcs/ft_printf										\
 srcs/ft_printf/auxiliary							\
 srcs/ft_printf/form									\
