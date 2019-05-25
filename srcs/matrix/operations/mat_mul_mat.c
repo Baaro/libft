@@ -6,6 +6,7 @@ static t_any	mat_row_by_col(t_matrix a, t_matrix b, size_t i)
 	size_t j;
 
 	j = 0;
+	x = 0;
 	while (++j <= mat_cols(a))
 		x += mat_get(a, i, j) * mat_get(b, i, j);
 	return (x);

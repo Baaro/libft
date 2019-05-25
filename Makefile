@@ -53,7 +53,7 @@ $(NAME): $(OBJ)
 VPATH := $(source_dirs)
 
 %.o: %.c $(INCLUDES)
-	$(CC) $(FLAGS) -I $(INCLUDES) -c $< -o $@ -lm
+	$(CC) $(FLAGS) -I $(INCLUDES) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)
