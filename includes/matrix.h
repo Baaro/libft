@@ -26,7 +26,7 @@ typedef struct		s_matrixdesc
 typedef t_matrixdesc* t_matrix;
 
 /** Memory management **/
-t_matrix			mat_create_nxm(size_t rows, size_t cols);
+void				mat_create_nxm(t_matrix *m, size_t rows, size_t cols);
 t_matrix			mat_create_4x4(void);
 
 void				mat_resize(t_matrix a, size_t rows, size_t cols);

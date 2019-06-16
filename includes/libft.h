@@ -53,7 +53,7 @@ int					ft_toupper(int c);
 int					ft_tolower(int c);
 
 /* String */
-int					ft_atoi(const char *str);
+int					ft_atoi32(const char *str);
 char				*ft_itoa(int n);
 
 char				*ft_strdup(const char *s1);

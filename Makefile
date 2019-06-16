@@ -24,7 +24,7 @@ srcs/memory											\
 srcs/put											\
 srcs/string											\
 srcs/system											\
-srcs/matrix/accessors									\
+srcs/matrix/accessors								\
 srcs/matrix/errors									\
 srcs/matrix/memory									\
 srcs/matrix/operations								\
