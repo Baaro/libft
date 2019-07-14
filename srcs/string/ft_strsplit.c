@@ -65,13 +65,10 @@ char			**ft_strsplit(char const *s, char c)
 	count = cntwords(s, c);
 	if (!(arr = (char **)malloc(sizeof(char *) * count + 1)))
 		return (NULL);
-	i = 0;
+	i = -1;
 	last_pos = 0;
-	while (i < count)
-	{
+	while (++i < count)
 		arr[i] = putword(s, c, &last_pos);
-		++i;
-	}
 	arr[i] = NULL;
 	return (arr);
 }
