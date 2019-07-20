@@ -8,5 +8,5 @@ void	mat_create_nxm(t_matrix *m, size_t rows, size_t cols)
 	*m = ft_memalloc(sizeof(t_matrixdesc));
 	(*m)->rows = rows;
 	(*m)->cols = cols;
-	(*m)->data = (t_any *)ft_memalloc(rows * cols);
+	(*m)->data = ft_memalloc(sizeof(t_any) * rows * cols);
 }
