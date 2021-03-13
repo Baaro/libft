@@ -39,7 +39,7 @@ static t_lst	*ft_find_fd(t_lst **head, const int fd)
 	return (tmp->fd == fd ? tmp : (tmp->next = ft_lst_create(fd)));
 }
 
-static int		ft_cut_line(t_lst *lst, char *bf, char **line, int ret)
+static int		ft_check(t_lst *lst, char *bf, char **line, int ret)
 {
 	char	*del;
 	char	*pos;
@@ -47,11 +47,12 @@ static int		ft_cut_line(t_lst *lst, char *bf, char **line, int ret)
 	if (lst->str == NULL)
 		return (0);
 	pos = NULL;
-	lst->str = ft_strjoincl(lst->str, bf, 0);
+	del = lst->str;
+	(lst->str = ft_strjoin(lst->str, bf)) ? ft_strdel(&del) : 0;
 	ft_strclr(bf);
 	if ((pos = ft_strchr(lst->str, '\n')))
 	{
-		*line = ft_strsub(lst->str, 0, (pos - (lst->str)));
+		*line = ft_strsub(lst->str, 0, pos - (lst->str));
 		del = lst->str;
 		(lst->str = ft_strdup(pos + 1)) ? ft_strdel(&del) : 0;
 		ft_strdel(&bf);
@@ -66,41 +67,31 @@ static int		ft_cut_line(t_lst *lst, char *bf, char **line, int ret)
 	return (0);
 }
 
-static int		ft_find_endline(t_lst *lst, char **line)
-{
-	char			*bf;
-	int				ret;
-
-	bf = ft_strnew(BUFF_SIZE);
-	while (true)
-	{
-		if (lst->str && !ft_strchr(lst->str, '\n'))
-		{
-			ret = read(lst->fd, bf, BUFF_SIZE);
-			bf[ret] = '\0';
-		}
-		if (!lst->str || (ret == 0 && (lst->str)[0] == '\0'))
-			break ;
-		if (ret == -1)
-			return (-1);
-		if (lst->str && ft_cut_line(lst, bf, line, ret))
-			return (1);
-	}
-	ft_strdel(&bf);
-	return (0);
-}
-
 int				get_next_line(const int fd, char **line)
 {
 	static t_lst	*head;
 	t_lst			*new;
-	int				status;
+	char			*bf;
+	int				ret;
 
 	if (fd < 0 || !line || read(fd, NULL, 0) < 0 || BUFF_SIZE < 1)
 		return (-1);
-	if (*line != NULL)
-		ft_strdel(line);
 	new = ft_find_fd(&head, fd);
-	status = ft_find_endline(new, line);
-	return (status);
+	bf = ft_strnew(BUFF_SIZE);
+	while (1)
+	{
+		if (new->str && !ft_strchr(new->str, '\n'))
+		{
+			ret = read(new->fd, bf, BUFF_SIZE);
+			bf[ret] = '\0';
+		}
+		if (!new->str || (ret == 0 && (new->str)[0] == '\0'))
+			break ;
+		if (ret == -1)
+			return (-1);
+		if (new->str && ft_check(new, bf, line, ret))
+			return (1);
+	}
+	ft_strdel(&bf);
+	return (0);
 }
