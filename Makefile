@@ -6,7 +6,7 @@
 #    By: vsokolog <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/06 19:42:17 by vsokolog          #+#    #+#              #
-#    Updated: 2021/03/22 20:15:46 by vsokolog         ###   ########.fr        #
+#    Updated: 2021/03/25 18:31:49 by vsokh            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,9 @@ MAKE := make
 RM := rm -rf
 
 RED = '\033[0;31m'
-GR = '\033[0;32m'
-NC = '\033[0m'
+YELLOW = "\033[33m"
+GREEN = '\033[0;32m'
+NOCOLOR = '\033[0m'
 
 search_wildcards := $(addsuffix /*.c, $(source_dirs))
 
@@ -51,7 +52,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	ar rc $@ $^
 	ranlib $@
-	@echo "\033[092mLibft has compiled successfully!\033[0m"
+	@echo ${GREEN}Libft has successfully compiled!${NOCOLOR}
 
 VPATH := $(source_dirs)
 
@@ -59,8 +60,8 @@ VPATH := $(source_dirs)
 	$(CC) $(FLAGS) -I $(INCLUDES) -c $< -o $@
 
 norm:
-	@echo ${RED}[Checking the $(NAME) NORM]${NC}
-	norminette
+	@echo ${YELLOW}[Norminetting $(NAME)]${NOCOLOR}
+	~/.norminette/norminette.rb src/* inc/*
 
 clean:
 	$(RM) $(OBJ)
