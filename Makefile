@@ -6,7 +6,7 @@
 #    By: vsokolog <vsokolog@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/25 18:36:46 by vsokolog          #+#    #+#              #
-#    Updated: 2021/03/25 18:36:46 by vsokolog         ###   ########.fr        #
+#    Updated: 2021/04/07 15:27:54 by vsokolog         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	ar rc $@ $^
 	ranlib $@
-	@echo ${GREEN}Libft has successfully compiled!${NOCOLOR}
+	@echo ${GREEN}$(NAME) compiled!${NOCOLOR}
 
 VPATH := $(source_dirs)
 
